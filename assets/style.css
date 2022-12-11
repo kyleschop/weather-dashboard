@@ -8,14 +8,28 @@ header {
 
 main {
     display: flex;
+    padding: 0px 20px;
 }
 
 #searchSection {
     display: flex;
     flex-direction: column;
+    width: 25%;
+    padding: 10px;
 }
 
 #displayWeather {
     display: flex;
     flex-direction: column;
+    width: 75%;
+    padding: 10px;
+}
+
+.currentDayInfo {
+    border-style: solid;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-between;
 }
