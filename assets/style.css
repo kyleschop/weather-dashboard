@@ -18,6 +18,10 @@ main {
     padding: 10px;
 }
 
+.searchBtn {
+    margin-top: 5px;
+}
+
 #displayWeather {
     display: flex;
     flex-direction: column;
@@ -27,9 +31,17 @@ main {
 
 .currentDayInfo {
     border-style: solid;
+    padding: 5px;
 }
 
 .forecast {
     display: flex;
     justify-content: space-between;
+    padding: 5px 0px;
+}
+
+.forecastCard {
+    border-style: solid;
+    padding: 5px;
+    width: 20%;
 }
