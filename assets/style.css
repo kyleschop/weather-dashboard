@@ -1,14 +1,22 @@
+body {
+    background-image: url(./Photos/Daiseys.jpg);
+    background-position: center;
+    background-size: 100%;
+}
+
 header {
     text-align: end;
     font-weight: 900;
     font-size: 50px;
-    background-color: blue;
+    background-image: linear-gradient(to right, blue, indigo, violet);
     padding: 10px 20px 10px 10px;
 }
 
 main {
     display: flex;
     padding: 0px 20px;
+    margin: 10px 0px;
+    background-color: rgb(226, 206, 244);
 }
 
 #searchSection {
