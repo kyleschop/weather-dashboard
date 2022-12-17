@@ -1,8 +1,16 @@
 var city = $('input[name="searchCity"]');
 var searchBtn = $('.searchBtn');
 var searchSectionEl = $('#searchSection');
+var temp = $('#temperature');
+var humidty = $("#humidity");
+var windSpeed = $("#wind-speed");
 var searchedCity = [];
 var storedCity = JSON.parse(localStorage.getItem("searchedCity"));
+var APIKey="a0aca8a89948154a4182dcecc780b513";
+
+var latlanUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
+
+var owUrl = "api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
 
 function makeCityBtn() {
     var cityBtn = $('<button>');
