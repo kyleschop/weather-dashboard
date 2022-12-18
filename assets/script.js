@@ -1,16 +1,36 @@
 var city = $('input[name="searchCity"]');
 var searchBtn = $('.searchBtn');
 var searchSectionEl = $('#searchSection');
-var temp = $('#temperature');
-var humidty = $("#humidity");
-var windSpeed = $("#wind-speed");
+var temp = $('.temp');
+var humidty = $('.humidity');
+var windSpeed = $('.wind');
+var cityDisplay = $('#cityDisplay');
 var searchedCity = [];
-var storedCity = JSON.parse(localStorage.getItem("searchedCity"));
-var APIKey="a0aca8a89948154a4182dcecc780b513";
+var storedCity = JSON.parse(localStorage.getItem('searchedCity'));
+var APIKey='a0aca8a89948154a4182dcecc780b513';
 
-var latlanUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
-
-var owUrl = "api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+function getWeather() {
+    var latlanUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city.val() + "&limit=1&appid=" + APIKey;
+    fetch(latlanUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+            function pullWeather() {
+                var owUrl = "api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+                fetch(owUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data);
+                    });
+            };
+            pullWeather();
+        });
+};
 
 function makeCityBtn() {
     var cityBtn = $('<button>');
@@ -24,6 +44,7 @@ function makeCityBtn() {
             }
         searchSectionEl.append(cityBtn);
     } 
+
 };
 
 function saveCity() {
@@ -38,9 +59,11 @@ function saveCity() {
 };
 
 function search() {
-    console.log(city.val());
     saveCity();
     makeCityBtn();
+    getWeather();
+    cityDisplay.text(' ');
+    cityDisplay.text(city.val());
 };
 
 searchBtn.on('click', search);
